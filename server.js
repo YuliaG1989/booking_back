@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-    postgres.query(`INSERT INTO clients (firstName, lastName, pets, email, phone) VALUES ('${req.body.firstName}', ${req.body.lastName}, ${req.body.pets}, ${req.body.email}, ${req.body.phone})`, (err, results) => {
+    postgres.query(`INSERT INTO clients (firstname, lastname, pets, email, phone) VALUES ('${req.body.firstname}', '${req.body.lastname}', ARRAY['${req.body.pets}'], '${req.body.email}', ${req.body.phone})`, (err, results) => {
         postgres.query('SELECT * FROM clients ORDER BY id ASC;', (err, results) => {
             res.json(results.rows)
         });
@@ -30,7 +30,7 @@ app.delete('/:id', (req, res) => {
 });
 
 app.put('/:id', (req, res) => {
-    postgres.query(`UPDATE clients SET firstName = '${req.body.firstName}', lastName = ${req.body.age}, pets = ${req.body.pets}, email = ${req.body.email}, phone = ${req.body.phone}  WHERE id = ${req.params.id}`, (err, results) => {
+    postgres.query(`UPDATE clients SET firstname = '${req.body.firstname}', lastname = '${req.body.lastname}', pets = ARRAY['${req.body.pets}'], email = '${req.body.email}', phone = ${req.body.phone}  WHERE id = ${req.params.id}`, (err, results) => {
         postgres.query('SELECT * FROM clients ORDER BY id ASC;', (err, results) => {
             res.json(results.rows)
         });
