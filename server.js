@@ -13,7 +13,7 @@ app.use(express.static('public'))
 
 app.use('/', require('./controllers/clientsAuth'))
 
-
+app.use('/home', require('./controllers/home'))
 
 
 

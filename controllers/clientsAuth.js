@@ -4,7 +4,7 @@ const validInfo = require('../middleware/validInfo')
 const jwt = require('jsonwebtoken')
 const  bcrypt  =  require("bcrypt");
 const jwtGenerator = require('../jwtGenerator')
-
+const authorization = require('../middleware/auth.js')
 
 
 postgres.connect(); 
@@ -103,20 +103,27 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-// router.put('/:id', async (req, res) => {
-//     const {id} = req.params;
-//     const {firstname, lastname, pets, phone, email, password } = req.body;
-//     const salt = await bcrypt.genSalt(10);
-//     const bcryptPassword = await bcrypt.hash(password, salt);
-//     postgres.query('UPDATE clients SET firstname = $1, lastname = $2, pets = ARRAY[$3], phone = $4, email = $5,  password=$6 WHERE id = $7',
-//     [firstname, lastname, pets, phone, email, bcryptPassword, id],
-//     (err, results) => {
-//     postgres.query('SELECT * FROM clients ORDER BY id ASC;', (err, results) => {
-//             res.json(results.rows)
-//         });
-//     })
+router.put('/:id', async (req, res) => {
+    const {id} = req.params;
+    const {firstname, lastname, pets, phone, email, password } = req.body;
+    const salt = await bcrypt.genSalt(10);
+    const bcryptPassword = await bcrypt.hash(password, salt);
+    postgres.query('UPDATE clients SET firstname = $1, lastname = $2, pets = ARRAY[$3], phone = $4, email = $5,  password=$6 WHERE id = $7',
+    [firstname, lastname, pets, phone, email, bcryptPassword, id],
+    (err, results) => {
+    postgres.query('SELECT * FROM clients ORDER BY id ASC;', (err, results) => {
+            res.json(results.rows)
+        });
+    })
 
-// })
+})
 
-
+router.get("/verify", authorization, (req, res) => {
+    try {
+      res.json(true);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server error");
+    }
+  });
 module.exports = router
