@@ -1,6 +1,6 @@
 const router  = require('express').Router()
 const postgres = require('../postgres.js');
-
+const validInfo = require('../middleware/validInfo')
 const jwt = require('jsonwebtoken')
 const  bcrypt  =  require("bcrypt");
 const jwtGenerator = require('../jwtGenerator')
@@ -44,7 +44,7 @@ router.get('/', (req, res) => {
 //     }
 //   });
 
-router.post('/', async (req, res) => {
+router.post('/', validInfo, async (req, res) => {
     const {firstname, lastname, pets, phone, email, password } = req.body;
     const user = await postgres.query("SELECT * FROM clients WHERE email = $1", [
                 email
@@ -65,7 +65,7 @@ router.post('/', async (req, res) => {
     })
 });
 
-router.post("/login",  async (req, res) => {
+router.post("/login", validInfo, async (req, res) => {
     const { email, password } = req.body;
   
     try {
