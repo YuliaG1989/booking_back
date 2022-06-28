@@ -1,41 +1,22 @@
 const express = require('express')
 const app = express()
 const cors =  require('cors')
-const postgres = require('./postgres.js');
+const jwt = require('jsonwebtoken')
+const  bcrypt  =  require("bcrypt");
+
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'))
-postgres.connect();
 
-app.get('/', (req, res) => {
-    postgres.query('SELECT * FROM clients ORDER BY id ASC;', (err, results) => {
-        res.json(results.rows)
-    });
-});
 
-app.post('/', (req, res) => {
-    postgres.query(`INSERT INTO clients (firstname, lastname, pets, email, phone) VALUES ('${req.body.firstname}', '${req.body.lastname}', ARRAY['${req.body.pets}'], '${req.body.email}', ${req.body.phone})`, (err, results) => {
-        postgres.query('SELECT * FROM clients ORDER BY id ASC;', (err, results) => {
-            res.json(results.rows)
-        });
-    })
-});
+///----REGISTER &LOGIN
 
-app.delete('/:id', (req, res) => {
-    postgres.query(`DELETE FROM clients WHERE id = ${req.params.id};`, (err, results) => {
-        postgres.query('SELECT * FROM clients ORDER BY id ASC;', (err, results) => {
-            res.json(results.rows)
-        });
-    });
-});
+app.use('/', require('./controllers/clientsAuth'))
 
-app.put('/:id', (req, res) => {
-    postgres.query(`UPDATE clients SET firstname = '${req.body.firstname}', lastname = '${req.body.lastname}', pets = ARRAY['${req.body.pets}'], email = '${req.body.email}', phone = ${req.body.phone}  WHERE id = ${req.params.id}`, (err, results) => {
-        postgres.query('SELECT * FROM clients ORDER BY id ASC;', (err, results) => {
-            res.json(results.rows)
-        });
-    })
-});
+
+
+
+
 
 
 
