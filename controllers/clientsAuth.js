@@ -33,15 +33,15 @@ router.post('/signup', validInfo, async (req, res) => {
                 [firstname, lastname, pets, phone, email, bcryptPassword], (err, results) => {
    
             const token = jwtGenerator(results.rows[0].id)
-            // const id = user.rows.id
-            console.log(results.rows[0])
+          
+            console.log(results.rows[0].id)
             res.json({token})
                 
         });
     })
 
 
-router.post("/login", validInfo, async (req, res) => {
+router.get("/login", validInfo, async (req, res) => {
     const { email, password } = req.body;
   
     try {
@@ -62,9 +62,10 @@ router.post("/login", validInfo, async (req, res) => {
         return res.status(401).json("Invalid Credential");
       }
       
-       const token = jwtGenerator(user.rows.id)
+       const token = jwtGenerator(user.rows[0].id)
        const name = user.rows[0].firstname
-       res.json({token , name})
+       const id = user.rows[0].id
+       res.json({token , name, id})
    
     } catch (err) {
       console.error(err.message);

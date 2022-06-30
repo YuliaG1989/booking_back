@@ -12,6 +12,7 @@ const  verify = async( req,res,next)=>{
 
         const payload = jwt.verify(token, process.env.SECRET_KEY)
         req.user = payload.user
+        console.log(req.user)
        next()
     }catch(err){
         console.error(err.message);
