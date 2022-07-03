@@ -15,7 +15,7 @@ app.use('/', require('./controllers/clientsAuth'))
 
 app.use('/home', require('./controllers/home'))
 
-
+app.use('/store', require('./controllers/store'))
 
 
 

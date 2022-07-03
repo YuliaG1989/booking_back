@@ -6,7 +6,7 @@ router.get("/", authorization, async (req, res) => {
   try {
     // res.json(req.user)
     const user = await postgres.query(
-      "SELECT firstname FROM clients WHERE id = $1",
+      "SELECT * FROM clients WHERE id = $1",
       [req.user] 
     ); 
     
