@@ -1,5 +1,5 @@
 const Client = require('pg').Client
-
+require('dotenv').config()
 const dbConfig = {
 	connectionString: 'postgresql://localhost:5432/clients',
 }
