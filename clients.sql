@@ -6,6 +6,7 @@ CREATE TABLE store(
     id SERIAL PRIMARY KEY ,
     image varchar(255),
     product VARCHAR (255),
+    quantity INT DEFAULT 1
     price INT,
     description VARCHAR (255)
     
