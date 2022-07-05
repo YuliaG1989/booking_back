@@ -12,6 +12,7 @@ app.use(express.json());
 app.use(express.static('public'))
 
 
+
 ///----REGISTER &LOGIN
 
 app.use('/', require('./controllers/clientsAuth'))

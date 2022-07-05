@@ -6,7 +6,7 @@ CREATE TABLE store(
     id SERIAL PRIMARY KEY ,
     image varchar(255),
     product VARCHAR (255),
-    quantity INT DEFAULT 1
+    quantity INT DEFAULT 1,
     price INT,
     description VARCHAR (255)
     
@@ -25,11 +25,11 @@ CREATE TABLE clients(
     firstName VARCHAR(255),
     lastName VARCHAR(255),
     pets VARCHAR [],
-    phone INT,
+    phone INT ,
     email VARCHAR(255),
     password VARCHAR(255)
 );
 
-INSERT INTO clients (firstname, lastname, pets, phone,  email, password) VALUES ('Yulia', 'G', ARRAY['Kisa'], 2222222, 'mail@email', 'abvgd');
+INSERT INTO clients (firstname, lastname, pets, phone,  email, password) VALUES ('Yulia', 'G', ARRAY['Kisa'], 2222222, 'yulia.glushenko@gmail', '12345');
 INSERT INTO store (product, price, description, image) VALUES ('Spaces SeaQuins', 15, 'mermaid toy', 'https://assets.petco.com/petco/image/upload/c_pad,dpr_1.0,f_auto,q_auto,h_636,w_636/c_pad,h_636,w_636/3203330-center-1');
 -- DROP DATABASE clients;
