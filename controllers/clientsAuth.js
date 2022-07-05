@@ -104,9 +104,9 @@ router.put('/:id', async (req, res) => {
     postgres.query('UPDATE clients SET firstname = $1, lastname = $2, pets = ARRAY[$3], phone = $4, email = $5,  password=$6 WHERE id = $7',
     [firstname, lastname, pets, phone, email, bcryptPassword, id],
     (err, results) => {
-    postgres.query('SELECT * FROM clients ORDER BY id ASC;', (err, results) => {
+    
             res.json(results.rows)
-        });
+        ;
     })
 
 })
