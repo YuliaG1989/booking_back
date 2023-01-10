@@ -5,8 +5,9 @@ const jwt = require('jsonwebtoken')
 const  bcrypt  =  require("bcrypt");
 const jwtGenerator = require('../jwtGenerator')
 const authorization = require('../middleware/auth.js')
+const cors =  require('cors')
 
-
+router.use( cors());
 postgres.connect(); 
 
 router.get('/', (req, res) => {
