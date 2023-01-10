@@ -31,5 +31,5 @@ CREATE TABLE clients(
 );
 
 INSERT INTO clients (firstname, lastname, pets, phone,  email, password) VALUES ('Yulia', 'G', ARRAY['Kisa'], 2222222, 'yulia.glushenko@gmail', '12345');
-INSERT INTO store (product, price, description, image) VALUES ('Spaces SeaQuins', 15, 'mermaid toy', 'https://assets.petco.com/petco/image/upload/c_pad,dpr_1.0,f_auto,q_auto,h_636,w_636/c_pad,h_636,w_636/3203330-center-1');
+INSERT INTO store (product, price, description, image) VALUES ('Cuddle Monkey', 5, 'catnip toy', 'https://assets.petco.com/petco/image/upload/c_pad,dpr_1.0,f_auto,q_auto,h_636,w_636/c_pad,h_636,w_636/l_sale-badge,fl_relative,w_0.16,g_north_west,e_sharpen/2312278-right-1');
 -- DROP DATABASE clients;
