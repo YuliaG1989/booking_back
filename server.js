@@ -8,7 +8,7 @@ const path = require("path");
 require('dotenv').config()
 
 app.use(cors({
-    origin: '*'
+    origin: 'https://thegreatcat.herokuapp.com/'
 }));
 app.use(express.json());
 app.use(express.static('public'))
