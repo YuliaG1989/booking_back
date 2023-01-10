@@ -10,7 +10,7 @@ postgres.connect();
 
 router.get('/', (req, res) => {
     postgres.query('SELECT * FROM clients ORDER BY id ASC;', (err, results) => {
-        res.json(results
+        res.json(results.rows
           )
     });
 });
