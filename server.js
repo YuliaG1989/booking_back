@@ -3,7 +3,7 @@ const app = express()
 const cors =  require('cors')
 const jwt = require('jsonwebtoken')
 const  bcrypt  =  require("bcrypt");
-const PORT = 5432 || 5000
+const PORT = process.env.PORT || 5000
 const path = require("path");
 require('dotenv').config()
 
@@ -22,6 +22,6 @@ app.use('/home', require('./controllers/home'))
 app.use('/store', require('./controllers/store'))
 
 
-app.listen( ()=>{
-    console.log('listening... ' + PORT)
+app.listen(PORT, ()=>{
+    console.log('listening...')
 })
