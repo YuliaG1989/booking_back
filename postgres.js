@@ -1,7 +1,7 @@
 const Client = require('pg').Client
 require('dotenv').config()
 const dbConfig = {
-	connectionString: 'postgresql://localhost:5432/clients',
+	connectionString: 'postgresql://localhost:5000/clients',
 }
 
 if(process.env.HEROKU_POSTGRESQL_GOLD_URL){
