@@ -22,6 +22,6 @@ app.use('/home', require('./controllers/home'))
 app.use('/store', require('./controllers/store'))
 
 
-app.listen(PORT, ()=>{
-    console.log(`listening...${PORT}`)
+app.listen(5432, ()=>{
+    console.log(`listening...${5432}`)
 })
