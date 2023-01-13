@@ -16,8 +16,8 @@
   },
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "EXPRESS_PORT=5000 nodemon ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "repository": {
     "type": "git",
